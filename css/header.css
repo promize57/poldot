@@ -1,0 +1,189 @@
+  /* Reset some default styles for consisten*/
+  body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+   body {
+    font-family: Arial, Helvetica, sans-serif;
+   line-height: 1.6;
+   color: #333;
+   background-color: #fff;
+}
+.header{
+  background-color: #f6efe600;
+  height: 80px;
+  border-top-left-radius: 20px;
+  margin-bottom:0;
+  position:relative;
+}
+
+ .nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+ font-size: 24px;
+ color: white;
+ cursor: pointer;
+  padding: 10px;
+ background-color: rgba(0, 0, 0, 0.5);
+border-radius: 5px;
+ z-index: 2;
+}
+
+ .slide-text {
+   position: absolute;
+   top: 50%;
+    left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: rgba(14, 13, 13, 0.5);
+    color: white;
+   padding: 10px 20px;
+   font-size: 18px;
+   border-radius: 5px;
+   width: 100%;
+   height:100%;
+   box-sizing: border-box;
+   z-index: 2;
+   object-fit: cover;
+        }
+
+  .slide-text-div{
+    
+    width:450px;
+    margin-left:150px;
+    margin-top:100px;
+    display:flex;
+    flex-direction: column;
+  }
+  
+  .slide-button{
+    width: 180px;
+    height:50px;
+    color:white;
+    background-color: transparent;
+    margin-left:30px;
+    font-size:14px;
+    border-color:white;
+    border-radius:50px;
+    padding-left:40px;
+    padding-right:40px;
+    cursor:pointer;
+    margin-top:30px;
+  }
+  .slide-button:hover{
+    background-color:#1c26db;
+    border:none;
+  }
+.nav-arrow.left {
+ left: 10px;
+ }
+
+ .nav-arrow.right {
+ right: 10px;
+ }
+.header-div{
+  position:relative;
+}
+.head-ops{
+  color:#1c26db;
+  display:inline;
+  font-weight: bold;
+  cursor:hand;
+  border:none;
+  background-color: transparent;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f5f7f500;
+            
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  
+  text-decoration: none;
+
+  
+  
+}
+
+.poldot-logo{
+  height: 70px;
+  padding-top:10px;
+  margin-bottom:0%; 
+  margin-top:0px;
+  padding-bottom:0px;
+  
+ 
+
+
+}
+.header-image-div{
+       
+  height:10;
+  flex:1;
+  padding-left:100px;
+
+}
+.header{
+  display:flex;
+  flex-direction: row;
+
+}
+.header-left-section{
+
+  flex:1.1;
+  align-items: center;
+  display:flex;
+
+
+}
+.head-ops{
+  flex:1;
+}
+.man-p{
+  margin-left:200px;
+  margin-top:200px;
+  color:rgb(239, 234, 230);
+}
+.link-button-with-list {
+            display: block;  /* Anchor as a block */
+            width: fit-content; /* Adjust width to content */
+            position: relative; /* For absolute positioning of the list */
+            padding-bottom: 50px; /* Make space for the dropdown */
+        }
+
+        .name-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            list-style-type: none;
+            margin: 0;
+            margin-top: 5px;
+            min-width: 150px; /* Give it a minimum width */
+        }
+
+        .link-button-with-list:hover .name-list,
+        .name-list:hover {
+            display: block;
+        }
+
+        .name-list li {
+            padding: 8px 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .name-list li:hover {
+            background-color: #f8f8f8;
+        }
+ .name-list li:last-child {
+            border-bottom: none;
+ }

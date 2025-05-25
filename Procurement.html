@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poldot</title>
+    <link rel="icon" href="poldot-pictures/poldot-just-logo.png" type="image/png">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/center.css">
+    <link rel="stylesheet" href="css/bottom.css">
+    <style>
+        .slider-container {
+            width: 100%; /* Adjust as needed */
+            height: 450px; /* Adjust as needed */
+            position: relative;
+            overflow: hidden;
+            margin:0;
+            
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            display: flex; /* For centering the image */
+            justify-content:unset;
+            align-items: center;
+        }
+
+        .slide img {
+            padding-top:1px;
+            width: 100%;
+            height:auto;
+              /* Ensure image doesn't exceed container */
+            /*max-height: 100%; /* Ensure image doesn't exceed container */
+            object-fit: contain; /* Maintain image aspect ratio */
+            
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .text-overlay{
+          position: absolute;
+        }
+    </style>
+</head>
+<body>
+  <div>
+    <div class="header-div">
+      <div class="header">
+        <div class="header-image-div">
+          <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png">
+        </div>
+        <div class="header-left-section">
+          <a href="home.html" class="head-ops">HOME</a>
+          <a href="home.html" class="head-ops">ABOUT</a>
+          <a href="home.html" class="head-ops">SERVICE</a>
+          <a href="home.html" class="head-ops">CONTACT</a>
+          
+        </div>
+      </div>
+     
+      <div class="slider-container">
+        <div class="slide active">
+            <img src="pictures/female-enginer.jpeg" alt="Image 1">
+            <div class="slide-text">
+              <h1 class="man-p"> PROCUREMENT</h1>
+            </div>
+        </div>
+
+        </div>
+        <div class="nav-arrow left" onclick="changeSlide(-1)">❮</div>
+        <div class="nav-arrow right" onclick="changeSlide(1)">❯</div>
+     </div>
+    </div>
+
+    <div id="changeColorButton">
+
+      <diV class="topic-div">
+        
+        <P>
+          Procurement is a vital element of successful EPCIC (Engineering, Procurement, Construction, Installation, and Commissioning) projects within the oil and gas industry. Our dedicated procurement team offers comprehensive supply chain management services, tailored to meet the diverse needs of capital projects, plant upgrades, shutdowns, and refurbishments.
+        </P>
+        <P>
+          Leveraging extensive industry experience, we excel at sourcing essential equipment and materials, consistently providing highly competitive prices without compromising on quality. Our procurement specialists possess deep industry knowledge, enabling them to identify optimal suppliers, negotiate favorable terms, and ensure all materials and equipment strictly adhere to required specifications. This includes the capability to source specialized and hard-to-find items.
+        </P>
+        <P>
+          We specialize in key procurement categories, including:
+          <ul class="topic-list">
+            <li class="P">
+              Pipe, Pipe Fittings, and Valves
+
+            </li>
+            <li class="P">
+              Chemicals
+
+            </li>
+           <li class="P">
+              Tools and Toolboxes
+
+            </li>
+            <li class="P">
+              Cables and Electricals
+
+            </li>
+            <li class="P">
+              General Procurement
+
+            </li>
+
+          </ul>
+          <p>
+           This focused expertise allows us to deliver a comprehensive suite of procurement services, addressing all client requirements efficiently.
+          </p>
+        </P>
+        <P>
+          Our procurement process is meticulously designed for seamless coordination among procurement executives, material coordinators, quality inspectors, and logistics coordinators. This integrated approach ensures efficiency, transparency, and keeps all stakeholders informed of progress. We employ a robust tracking system that monitors the entire procurement journey, from initial inquiry to final delivery, enabling us to proactively identify and resolve potential issues and mitigate risks.
+
+          Recognizing the critical importance of timely delivery, our dedicated logistics coordinators work closely with suppliers and transportation partners. Their role is to guarantee that all materials and equipment arrive on schedule and in pristine condition, supporting project timelines.
+        </P>
+        <P>
+          Beyond efficiency, we prioritize strict adherence to safety and quality standards. A rigorous quality control process is embedded within our operations, ensuring that all materials and equipment meet the necessary benchmarks before being accepted and integrated into the project.
+        </P>
+        <p>
+          Ultimately, our procurement services are structured to ensure our clients' projects are completed on time and within budget. Our team's expertise and deep industry understanding enable us to provide high-quality, cost-effective solutions that consistently surpass expectations. We are committed to delivering unparalleled service, ensuring a smooth and efficient procurement process, and guaranteeing that all materials and equipment meet the highest standards.
+        </p>
+      </diV>
+      
+
+        
+      
+    </div>
+    <div class="why-poldot"> WHY CHOOSE POLDOT</div>
+    <div class="points">
+      <div class="title-div1">
+       <div class="title">
+        50+ years of combined experience
+       </div>
+       <div class="title-body">
+        Our executive management has over 50 years of combined experience in the oil and gas industry, meaning we have a wealth of knowledge and expertise in the field. This experience allows us to provide our clients with the highest level of service and the best possible solutions to their needs. 
+       </div>
+      </div>
+
+            <div class="title-div">
+       <div class="title">
+        Delivering cost-effective and technically advanced solutions
+       </div>
+       <div class="title-body">
+        We provide technically viable services at competitive prices. By staying current with the latest technological and industry developments, we enhance our operational efficiency, reduce costs, and deliver maximum value to our clients. 
+       </div>
+      </div>
+
+            <div class="title-div">
+       <div class="title">
+        Wide-ranging connections with dependable and proven sub-contractors
+       </div>
+       <div class="title-body">
+        We ensure on-time and on-budget project completion by utilizing a large network of trusted subcontractors, all of whom are vetted, qualified, and dedicated to upholding the highest standards. 
+       </div>
+      </div>
+
+
+    </div>
+    <img class="test-design" sc="worely-image-1.png">
+
+    <div class="bottom1">
+      <div class=" policy">
+        <div class="policy-content">HSE POLICY</div>
+        <div class="policy-content">QUALITY POLICY</div>
+        <div class="policy-content"> CONTACT US</div>
+        <div class="policy-content"> ABOUT US</div>
+      </div>
+      <div class="icon-div">
+        <div>
+
+          <img class="social-icon" src="icons/Facebook_Logo_(2019).png">
+
+        </div>
+        <div>
+
+          <img class="social-icon" src="icons/linkedin.png">
+
+        </div>
+         <div>
+          <img class="social-icon" src="icons/Instagram_logo_2016.svg">
+
+        </div>
+        <div>
+          <img class="social-icon" src="icons/Youtube_logo.png">
+
+        </div>
+      </div>
+    </div>
+    <div class="bottom2">
+      <div class="image-div">
+        <img class="rotating-image" src="poldot-pictures/poldot-just-logo.png">
+
+      </div>
+
+      <div class="details">
+        <div class="phone">PHONE NUMBER:</div>
+        <div> Asa-Afariogun EState Lagos NG, Ajao</div>
+      </div>
+    </div>
+  </div>
+ <script>
+         const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide) => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Initial call
+        showSlide(currentSlide);
+
+        // Auto slide change every 3 seconds (3000 milliseconds)
+        setInterval(() => {
+            changeSlide(1); // Auto advance to the next slide
+        }, 5000);
+
+          const changeColorButton = document.getElementById('changeColorButton');
+        const body = document.body;
+
+        function changeBackgroundColor() {
+            // Array of colors to choose from
+            const colors = ['#ffffff','#dcdcdc', '#F8F8ff', '#FFf8f0', '#dcdcdc', '#F8F8ff', '#FFf8f0'];
+            // Pick a random color from the array
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            // Change the background color of the body
+            body.style.backgroundColor = randomColor;
+        }
+
+        // Add a click event listener to the button
+        changeColorButton.addEventListener('click', changeBackgroundColor);
+
+        // Change color every 2 seconds
+        setInterval(changeBackgroundColor, 5000);
+      </script>
+</body>
+</html>
