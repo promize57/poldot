@@ -48,6 +48,73 @@
         .text-overlay{
           position: absolute;
         }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #000;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top:40px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+            margin: 40px 0;
+        }
+        /* Styles for the "Who We Are" section and image */
+        .who-we-are-content {
+            display: flex;
+            flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+            gap: 20px;
+            align-items: flex-start; /* Align items to the top */
+            margin-bottom: 20px;
+        }
+        .who-we-are-text {
+            flex: 2; /* Takes more space than the image on larger screens */
+            min-width: 300px; /* Ensures text doesn't get too narrow */
+        }
+        .who-we-are-picture {
+            flex: 1; /* Takes less space than the text on larger screens */
+            min-width: 200px; /* Ensures image doesn't get too small */
+            max-width: 100%; /* Ensures image doesn't exceed its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            border-radius: 8px; /* Optional: subtle rounded corners for the image */
+            object-fit: cover; /* Ensures image covers its area without distortion */
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .contact-info p {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -58,19 +125,21 @@
           <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png">
         </div>
         <div class="header-left-section">
-          <a href="home.html" class="head-ops">HOME</a>
-          <a href="about-us.html" class="head-ops">ABOUT</a>
-          <a href="home.html" class="head-ops">SERVICE</a>
+          <a href="home.html" class="head-ops">HOME
+          </a>
+          <a href="home.html" class="head-ops">ABOUT</a>
+         <a class="head-ops" href="home.html">
+         SERVICE
+         </a>
           <a href="#details" class="head-ops">CONTACT</a>
-          
         </div>
       </div>
      
       <div class="slider-container">
         <div class="slide active">
-            <img src="pictures/female-enginer.jpeg" alt="Image 1">
+            <img src="pictures/group-picture.png" alt="Image 1">
             <div class="slide-text">
-              <h1 class="man-p"> CONSTRUCTION</h1>
+              <h1 class="man-p"> </h1>
             </div>
         </div>
 
@@ -82,25 +151,41 @@
 
     <div id="changeColorButton">
 
-      <diV class="topic-div">
-        
-        <P>
-          We leverage our extensive experience in the industry, along with a wide range of successfully completed projects, to maintain a broad network of skilled personnel. This allows us to quickly form teams capable of executing any project.
-        </P>
-        <P>
-          Our core team comprises highly skilled and experienced engineers and professionals with expertise spanning all facets of project execution. Their diverse skill sets include chemical and process, mechanical, electrical, control and instrumentation, fire, structural, civil, cathodic protection, architectural, and industrial engineering. This enables us to create teams precisely matched to each project's requirements, ensuring optimal outcomes. We also have a readily available pool of experienced professionals to provide solutions tailored to our clients' needs.
-        </P>
-        <P>
-          In addition to our internal resources, we have cultivated strong relationships with a network of vetted and qualified contractors. We can swiftly establish Memorandums of Agreement (MOAs) with these contractors to augment our service delivery, ensuring projects remain on schedule and within budget.
-        </P>
-        <P>
-          We understand the critical importance of timely project completion in the EPCIC sector. Therefore, we have developed systems to rapidly assemble teams and mobilize resources as needed. Our efficient processes enable us to quickly identify and deploy the ideal personnel, guaranteeing the best possible results. We are also committed to upholding the highest standards of safety and quality. Our team undergoes rigorous training to ensure adherence to all safety regulations and guidelines, and we have robust quality control measures in place to ensure all project aspects meet the required benchmarks.
-        </P>
-        <P>
-          Ultimately, our manpower provision services are structured to ensure projects are delivered on time, within budget, and to the highest standards. By combining the expertise of our in-house professionals with the capabilities of our trusted contractor network, we provide our clients with the necessary resources and experience to consistently achieve exceptional results.
-        </P>
+    <div class="container">
+        <h1>About Poldot Oil and Gas</h1>
 
-      </diV>
+        <h2>Who We Are</h2>
+        <div class="who-we-are-content">
+            <div class="who-we-are-text">
+                <p>We’re Poldot Oil and Gas Limited— a team of everyday Nigerians who started out on the consumption side of the energy story through our tech and data centre venture, PoldotMining. Realizing the scale of our own energy use, we knew it was time to do more than just consume — it was time to give back.</p>
+                <p>Backed by a group of experienced professionals, we created Poldot Oil and Gas to make clean, affordable gas energy available to others, deliver comprehensive EPC services, and champion safer, smarter, and more sustainable ways to power Nigeria forward.</p>
+                <p>From CNG, LPG, and LNG supply to transport, storage, procurement, and EPC execution, we’re here to fuel the future. Future Energy, Today!</p>
+            </div>
+            <img src="poldot-pictures/WhatsApp Image 2025-05-14 at 08.10.58_7f6599d6.jpg" alt="Poldot Oil and Gas Team" class="who-we-are-picture">
+        </div>
+
+        <h2>Our Mission</h2>
+        <p>To deliver clean and reliable gas energy solutions, while providing world-class EPC services to the heart of Nigeria’s gas industry — all with safety as our daily habit, not just a policy.</p>
+
+        <h2>Our Vision</h2>
+        <p>To become Nigeria’s most trusted gas brand and a leading EPC services provider — known for putting safety first, embracing innovation, and making clean energy the easy choice for every Nigerian.</p>
+
+        <h2>Core Values</h2>
+        <ul>
+            <li><strong>Safety Always</strong> – We protect our people, our customers, and the environment like family.</li>
+            <li><strong>Integrity</strong> – We are transparent, accountable, and stand by our word.</li>
+            <li><strong>Smart Thinking</strong> – Innovation drives how we work and how we grow.</li>
+            <li><strong>Care for the Planet</strong> – Clean energy isn’t just what we do — it’s what we believe in.</li>
+            <li><strong>Top Quality</strong> – Whether it’s cylinders, EPC services, or customer care — we never cut corners.</li>
+            <li><strong>Respect</strong> – We create a positive, inclusive space where everyone is valued.</li>
+            <li><strong>Team Spirit</strong> – We win together, grow together, and build stronger communities together.</li>
+        </ul>
+
+        <div class="contact-info">
+            <p><strong>Email:</strong> poldotoilandgas@gmail.com</p>
+            <p><strong>Phone number:</strong> +234 9123805674</p>
+        </div>
+    </div>
       
 
         
@@ -157,7 +242,7 @@
 
         </div>
          <div>
-          <img class="social-icon" src="icons/Instagram_logo_2016.svg">
+          <img class="social-icon" href="https://www.instagram.com/poldot_official/?hl=en" src="icons/Instagram_logo_2016.svg">
 
         </div>
         <div>
@@ -172,11 +257,12 @@
 
       </div>
 
-      <div class="details">
-        <div class="phone">PHONE:+234 9123805674</div>
+      <div id="details">
+        <div class="phone">PHONE NUMBER:+234 9123805674</div>
         <div>Email: poldotoilandgas@gmail.com</div>
         <div class="phone">PHONE NUMBER:</div>
         <div> Asa-Afariogun EState Lagos NG, Ajao</div>
+        <div>© 2025 POLDOT Oil & Gas. All rights reserved.</div>
       </div>
     </div>
   </div>

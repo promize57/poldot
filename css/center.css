@@ -105,7 +105,8 @@ border-left-color: rgba(0, 0, 0, 0.211);
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   font-size: 25px;
-  margin:0px;
+  margin-bottom: 0px;
+  
 
 }
 .content-picture{
@@ -193,7 +194,7 @@ border-left-color: rgba(0, 0, 0, 0.211);
         .topic-div p{
           margin-top:30px;
           display:flex;
-          flex-direction: column;
+          flex-direction: row;
           width:700px;
           align-items: center;
           margin-left:300px;
