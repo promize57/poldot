@@ -3,19 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poldot</title>
-    <link rel="icon" href="poldot-pictures/poldot-just-logo.png" type="image/png">
-    <link rel="stylesheet" href="css/header.css">
+    <title>Poldot - Manpower Provision</title> <link rel="icon" href="poldot-pictures/poldot-just-logo.png" type="image/png">
+    <link rel="stylesheet" href="css/text.css">
     <link rel="stylesheet" href="css/center.css">
     <link rel="stylesheet" href="css/bottom.css">
     <style>
+        /*
+         * Place specific styles for Manpower page here, if they differ from global.
+         * For example, if this page's slider is different, its styles go here.
+         * Otherwise, general styles from header.css/center.css/bottom.css will apply.
+         */
+
         .slider-container {
-            width: 100%; /* Adjust as needed */
-            height: 450px; /* Adjust as needed */
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-height: 400px; /* Slightly shorter for internal pages perhaps */
             position: relative;
             overflow: hidden;
-            margin:0;
-            
+            margin: 0;
+        }
+        h1{
+          
+          color:rgb(193, 193, 219);
+        }
+        .container-title{
+          color:blue;
+          margin-top: 20px;
+          margin-bottom:20px;
+          align-items: center;
+          align-self: center;
         }
 
         .slide {
@@ -26,29 +42,51 @@
             height: 100%;
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            display: flex; /* For centering the image */
-            justify-content:unset;
+            display: flex;
+            justify-content: flex-start;
             align-items: center;
         }
 
         .slide img {
-            padding-top:1px;
             width: 100%;
-            height:auto;
-              /* Ensure image doesn't exceed container */
-            /*max-height: 100%; /* Ensure image doesn't exceed container */
-            object-fit: contain; /* Maintain image aspect ratio */
-            
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .slide.active {
             opacity: 1;
             z-index: 1;
         }
-        .text-overlay{
-          position: absolute;
+
+        .slide-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: white;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0));
+            padding-left: 5%;
+            box-sizing: border-box;
+            text-align: left;
         }
 
+        .man-p { /* Specific style for this page's slider heading */
+            font-size: 3rem; /* Larger for impact */
+            margin-left: 0; /* Remove fixed margin */
+            padding: 20px; /* Add padding */
+            box-sizing: border-box;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            max-width: 80%; /* Control width of text */
+            color:white;
+        }
+        p{
+          font-size: 23px;
+        }
        h1, h2, h3 {
             color: #0056b3;
         }
@@ -86,42 +124,109 @@
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
             margin: 40px 0;
         }
+
+        /* Navigation Arrows (if desired for internal page sliders) */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            user-select: none;
+        }
+        .nav-arrow.left { left: 10px; }
+        .nav-arrow.right { right: 10px; }
+
+
+        /* Styles for the main content of this page */
+        .topic-div {
+            max-width: 1000px; /* Max width for content readability */
+            margin: 50px auto; /* Center the content */
+            padding: 0 20px;
+            box-sizing: border-box;
+            line-height: 1.8; /* Improved readability */
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .topic-div p {
+            margin-bottom: 20px; /* Space between paragraphs */
+            /* Removed margin-left:300px and width:700px which were problematic for responsiveness */
+        }
+        .container {
+           padding-top:70px;
+            max-width: 900px;
+            margin: auto;
+            background: #faf7f7;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- Mobile Responsiveness for this page (similar to index.html) --- */
+        @media (max-width: 768px) {
+            .slider-container {
+                max-height: 300px;
+                aspect-ratio: 4 / 3;
+            }
+            .man-p {
+                font-size: 2.2rem;
+                padding: 15px;
+                max-width: 90%;
+            }
+            .topic-div {
+                padding: 0 15px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container {
+                max-height: 200px;
+                aspect-ratio: 1.5 / 1;
+            }
+            .man-p {
+                font-size: 1.6rem;
+                padding: 10px;
+                max-width: 95%;
+            }
+            .topic-div {
+                padding: 0 10px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
-  <div>
-    <div class="header-div">
-      <div class="header">
-        <div class="header-image-div">
-          <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png">
-        </div>
-        <div class="header-left-section">
-          <a href="home.html" class="head-ops">HOME
-          </a>
-          <a href="home.html" class="head-ops">ABOUT</a>
-         <a class="head-ops" href="home.html">
-         SERVICE
-         </a>
-          <a href="#details" class="head-ops">CONTACT</a>
-        </div>
-      </div>
-     
-      <div class="slider-container">
-        <div class="slide active">
-            <img src="pictures/gulf-1356004_1280.jpg" alt="Image 1">
-            <div class="slide-text">
-              <h1 class="man-p">QUALITY POLICY</h1>
+    <div>
+        <div class="header-div">
+            <div class="header">
+                <div class="header-image-div">
+                    <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png" alt="Poldot Oil & Gas Logo">
+                </div>
+                <div class="header-left-section">
+                    <a href="index.html" class="head-ops">HOME</a>
+                    <a href="about-us.html" class="head-ops">ABOUT</a>
+                    <a href="index.html#our-services-section" class="head-ops">SERVICE</a> <a href="#details" class="head-ops">CONTACT</a>
+                </div>
+                <button class="mobile-menu-button" aria-label="Toggle navigation menu">☰</button>
             </div>
+
+            <div class="slider-container">
+                <div class="slide active">
+                    <img src="pictures/gulf-1356004_1280.jpg" alt="Manpower Provision Image">
+                    <div class="slide-text">
+                        <h1 class="man-p">QUALITY POLICY</h1>
+                    </div>
+                </div>
+                </div>
         </div>
-
-        </div>
-        <div class="nav-arrow left" onclick="changeSlide(-1)">❮</div>
-        <div class="nav-arrow right" onclick="changeSlide(1)">❯</div>
-     </div>
-    </div>
-
-    <div id="changeColorButton">
-
+         <div>
  <div class="container">
         <h1>Our Quality Policies to You</h1>
 
@@ -174,86 +279,65 @@
         <p class="text-center mt-8">By implementing this policy, Poldot Oil and Gas reaffirms its commitment to providing the highest quality services to our clients, while ensuring the safety of all individuals involved in our operations.</p>
     </div>
 
-        
       
-    </div>
-    <div class="why-poldot"> WHY CHOOSE POLDOT</div>
-    <div class="points">
-      <div class="title-div1">
-       <div class="title">
-        50+ years of combined experience
-       </div>
-       <div class="title-body">
-        Our executive management has over 50 years of combined experience in the oil and gas industry, meaning we have a wealth of knowledge and expertise in the field. This experience allows us to provide our clients with the highest level of service and the best possible solutions to their needs. 
-       </div>
-      </div>
+
+
+        </div>
+
+        <div class="why-poldot">WHY CHOOSE POLDOT</div>
+        <div class="points">
+            <div class="title-div1">
+                <div class="title">50+ years of combined experience</div>
+                <div class="title-body">
+                    Our executive management has over 50 years of combined experience in the oil and gas industry, meaning we have a wealth of knowledge and expertise in the field. This experience allows us to provide our clients with the highest level of service and the best possible solutions to their needs.
+                </div>
+            </div>
 
             <div class="title-div">
-       <div class="title">
-        Delivering cost-effective and technically advanced solutions
-       </div>
-       <div class="title-body">
-        We provide technically viable services at competitive prices. By staying current with the latest technological and industry developments, we enhance our operational efficiency, reduce costs, and deliver maximum value to our clients. 
-       </div>
-      </div>
+                <div class="title">Delivering cost-effective and technically advanced solutions</div>
+                <div class="title-body">
+                    We provide technically viable services at competitive prices. By staying current with the latest technological and industry developments, we enhance our operational efficiency, reduce costs, and deliver maximum value to our clients.
+                </div>
+            </div>
 
             <div class="title-div">
-       <div class="title">
-        Wide-ranging connections with dependable and proven sub-contractors
-       </div>
-       <div class="title-body">
-        We ensure on-time and on-budget project completion by utilizing a large network of trusted subcontractors, all of whom are vetted, qualified, and dedicated to upholding the highest standards. 
-       </div>
-      </div>
+                <div class="title">Wide-ranging connections with dependable and proven sub-contractors</div>
+                <div class="title-body">
+                    We ensure on-time and on-budget project completion by utilizing a large network of trusted subcontractors, all of whom are vetted, qualified, and dedicated to upholding the highest standards.
+                </div>
+            </div>
+        </div>
 
 
+
+        <div class="bottom1">
+            <div class="policy">
+                <a class="policy-content" href="HSE-QUALITY.HTML">HSE QUALITY</a>
+                <a class="policy-content" href="Quality-policy.html">QUALITY POLICY</a>
+                <a class="policy-content" href="about-us.html">ABOUT US</a>
+            </div>
+            <div class="icon-div">
+                <div><img class="social-icon" src="icons/Facebook_Logo_(2019).png" alt="Facebook Icon"></div>
+                <div><img class="social-icon" src="icons/linkedin.png" alt="LinkedIn Icon"></div>
+                <div><img class="social-icon" src="icons/Instagram_logo_2016.svg" alt="Instagram Icon"></div>
+                <div><img class="social-icon" src="icons/Youtube_logo.png" alt="YouTube Icon"></div>
+            </div>
+        </div>
+        <div class="bottom2">
+            <div class="image-div">
+                <img class="rotating-image" src="poldot-pictures/poldot-just-logo.png" alt="Poldot Spinning Logo">
+            </div>
+            <div id="details">
+                <div class="phone">PHONE NUMBER:+234 9123805674</div>
+                <div>Email: poldotoilandgas@gmail.com</div>
+                <div>Asa-Afariogun Estate Lagos NG, Ajao</div>
+                <div>© 2025 POLDOT Oil & Gas. All rights reserved.</div>
+            </div>
+        </div>
     </div>
-    <img class="test-design" sc="worely-image-1.png">
-
-    <div class="bottom1">
-      <div class=" policy">
-        <a class="policy-content" href="HSE-QUALITY.HTML">HSE QUALITY</a>
-        <a class="policy-content" href="Quality-policy.html">QUALITY POLICY</a>
-        <a class="policy-content" href="about-us.html">ABOUT US</a>
-      </div>
-      <div class="icon-div">
-        <div>
-
-          <img class="social-icon" src="icons/Facebook_Logo_(2019).png">
-
-        </div>
-        <div>
-
-          <img class="social-icon" src="icons/linkedin.png">
-
-        </div>
-         <div>
-          <img class="social-icon" src="icons/Instagram_logo_2016.svg">
-
-        </div>
-        <div>
-          <img class="social-icon" src="icons/Youtube_logo.png">
-
-        </div>
-      </div>
-    </div>
-    <div class="bottom2">
-      <div class="image-div">
-        <img class="rotating-image" src="poldot-pictures/poldot-just-logo.png">
-
-      </div>
-
-      <div id="details">
-        <div class="phone">PHONE NUMBER:+234 9123805674</div>
-        <div>Email: poldotoilandgas@gmail.com</div>
-       
-        <div> Asa-Afariogun EState Lagos NG, Ajao</div>
-        <div>© 2025 POLDOT Oil & Gas. All rights reserved.</div>
-      </div>
-    </div>
-  </div>
- <script>
-         const slides = document.querySelectorAll('.slide');
+    <script>
+        // Existing slider script (if you want a slider on this page too)
+        const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
 
         function showSlide(index) {
@@ -266,31 +350,26 @@
             showSlide(currentSlide);
         }
 
-        // Initial call
         showSlide(currentSlide);
-
-        // Auto slide change every 3 seconds (3000 milliseconds)
         setInterval(() => {
-            changeSlide(1); // Auto advance to the next slide
+            changeSlide(1);
         }, 5000);
 
-          const changeColorButton = document.getElementById('changeColorButton');
-        const body = document.body;
+        // Mobile Menu Script (same as index.html)
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const headerLeftSection = document.querySelector('.header-left-section');
 
-        function changeBackgroundColor() {
-            // Array of colors to choose from
-            const colors = ['#ffffff','#dcdcdc', '#F8F8ff', '#FFf8f0', '#dcdcdc', '#F8F8ff', '#FFf8f0'];
-            // Pick a random color from the array
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            // Change the background color of the body
-            body.style.backgroundColor = randomColor;
+        if (mobileMenuButton && headerLeftSection) {
+            mobileMenuButton.addEventListener('click', () => {
+                headerLeftSection.classList.toggle('mobile-menu-open');
+            });
+
+            headerLeftSection.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    headerLeftSection.classList.remove('mobile-menu-open');
+                });
+            });
         }
-
-        // Add a click event listener to the button
-        changeColorButton.addEventListener('click', changeBackgroundColor);
-
-        // Change color every 2 seconds
-        setInterval(changeBackgroundColor, 5000);
-      </script>
+    </script>
 </body>
 </html>

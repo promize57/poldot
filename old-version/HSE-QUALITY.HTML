@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poldot</title>
+    <link rel="icon" href="poldot-pictures/poldot-just-logo.png" type="image/png">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/center.css">
+    <link rel="stylesheet" href="css/bottom.css">
+    <style>
+        .slider-container {
+            width: 100%; /* Adjust as needed */
+            height: 450px; /* Adjust as needed */
+            position: relative;
+            overflow: hidden;
+            margin:0;
+            
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #000;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+            margin: 40px 0;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            display: flex; /* For centering the image */
+            justify-content:unset;
+            align-items: center;
+        }
+
+        .slide img {
+            padding-top:1px;
+            width: 100%;
+            height:auto;
+              /* Ensure image doesn't exceed container */
+            /*max-height: 100%; /* Ensure image doesn't exceed container */
+            object-fit: contain; /* Maintain image aspect ratio */
+            
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        .text-overlay{
+          position: absolute;
+        }
+    </style>
+</head>
+<body>
+  <div>
+    <div class="header-div">
+      <div class="header">
+        <div class="header-image-div">
+          <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png">
+        </div>
+        <div class="header-left-section">
+          <a href="index.html" class="head-ops">HOME</a>
+          <a href="about-us.html" class="head-ops">ABOUT</a>
+          <a href="home.html" class="head-ops">SERVICE</a>
+          <a href="#details" class="head-ops">CONTACT</a>
+          
+        </div>
+      </div>
+     
+      <div class="slider-container">
+        <div class="slide active">
+            <img src="pictures/night-image.webp" alt="Image 1">
+            <div class="slide-text">
+              <h1 class="man-p"> HSE QUALITY</h1>
+            </div>
+        </div>
+
+        </div>
+        <div class="nav-arrow left" onclick="changeSlide(-1)">❮</div>
+        <div class="nav-arrow right" onclick="changeSlide(1)">❯</div>
+     </div>
+    </div>
+
+ <div id="changeColorButton">
+
+<div class="container">
+        <h1>Our Commitment to Health, Safety, and the Environment</h1>
+
+        <p>At <strong>Poldot Oil and Gas</strong>, protecting the well-being of our team, contractors, and the public, while minimizing our environmental footprint, is paramount. We firmly believe that every incident is preventable, and we're dedicated to continuously improving our HSE performance.</p>
+
+        <hr>
+   
+        <h2>Health and Safety</h2>
+        <p>Our approach to health and safety is comprehensive and unwavering:</p>
+        <ul>
+            <li><strong>Compliance First:</strong> We strictly adhere to all relevant health and safety laws and regulations, including the Occupational Health and Safety Act and its regulations.</li>
+            <li><strong>Safe Work Environment:</strong> We're committed to providing a secure and healthy workplace. This means maintaining clean, well-lit, and properly ventilated spaces, along with providing thorough training and effective supervision.</li>
+            <li><strong>Risk Management:</strong> We proactively identify, assess, and control health and safety risks. This involves conducting detailed hazard assessments, implementing robust safe work procedures, and providing necessary personal protective equipment (PPE).</li>
+            <li><strong>Empowered Workforce:</strong> Our employees receive essential training, supervision, and PPE to ensure their safety on the job. We offer both initial and ongoing training to keep everyone current with the latest safety procedures and regulations.</li>
+            <li><strong>Learning from Incidents:</strong> We thoroughly investigate all accidents and incidents, taking prompt corrective actions to prevent recurrence. Our process includes root cause analyses to address underlying issues effectively.</li>
+            <li><strong>Employee Involvement:</strong> We actively involve our employees in health and safety matters, encouraging them to voice any concerns. We value their insights as our best resource for identifying and addressing potential risks.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Environmental Stewardship</h2>
+        <p>We are dedicated to responsible environmental practices:</p>
+        <ul>
+            <li><strong>Regulatory Adherence:</strong> We comply with all relevant environmental laws and regulations, including the Environmental Protection Act and its accompanying regulations.</li>
+            <li><strong>Minimizing Impact:</strong> We strive to minimize our operational environmental impact through best practices and eco-friendly technologies. This includes reducing resource consumption, minimizing waste and emissions, and safely managing hazardous materials.</li>
+            <li><strong>Pollution Prevention:</strong> We prevent pollution and reduce waste by adopting sound resource management. This encompasses recycling, proper waste disposal, and conservation measures to lessen our reliance on natural resources.</li>
+            <li><strong>Community Partnership:</strong> We collaborate with local communities to minimize any negative operational impacts. This involves consulting with community members, addressing their concerns, and acting as a responsible neighbor.</li>
+            <li><strong>Continuous Improvement:</strong> We regularly review our environmental performance, taking corrective actions as needed. This includes setting ambitious environmental targets and continuously monitoring our progress.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Shared Responsibility</h2>
+        <p>HSE is a collective effort at Poldot Oil and Gas:</p>
+        <ul>
+            <li><strong>Management's Role:</strong> Our management team leads the implementation of this HSE policy, ensuring adequate resources, including necessary training, supervision, and PPE, are available and that all HSE policies and procedures are followed.</li>
+            <li><strong>Everyone's Duty:</strong> All employees and contractors are responsible for adhering to this HSE policy and complying with relevant health and safety laws. This means following safe work procedures, using required PPE, and reporting any potential HSE violations.</li>
+            <li><strong>Speaking Up:</strong> We expect anyone who witnesses or becomes aware of a potential HSE violation to report it immediately to their supervisor or the HSE department. We encourage an open culture where concerns are raised, and we have a zero-tolerance policy for intentional HSE policy violations.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Policy Evolution</h2>
+        <p>This HSE policy is a dynamic document. We review and update it regularly to reflect the latest best practices and regulatory requirements. We are committed to ongoing improvement in our HSE performance and welcome feedback and suggestions from all stakeholders.</p>
+    </div>
+      
+
+        
+      
+    </div>
+    <div class="why-poldot"> WHY CHOOSE POLDOT</div>
+    <div class="points">
+      <div class="title-div1">
+       <div class="title">
+        50+ years of combined experience
+       </div>
+       <div class="title-body">
+        Our executive management has over 50 years of combined experience in the oil and gas industry, meaning we have a wealth of knowledge and expertise in the field. This experience allows us to provide our clients with the highest level of service and the best possible solutions to their needs. 
+       </div>
+      </div>
+
+            <div class="title-div">
+       <div class="title">
+        Delivering cost-effective and technically advanced solutions
+       </div>
+       <div class="title-body">
+        We provide technically viable services at competitive prices. By staying current with the latest technological and industry developments, we enhance our operational efficiency, reduce costs, and deliver maximum value to our clients. 
+       </div>
+      </div>
+
+            <div class="title-div">
+       <div class="title">
+        Wide-ranging connections with dependable and proven sub-contractors
+       </div>
+       <div class="title-body">
+        We ensure on-time and on-budget project completion by utilizing a large network of trusted subcontractors, all of whom are vetted, qualified, and dedicated to upholding the highest standards. 
+       </div>
+      </div>
+
+
+    </div>
+  
+
+    <div class="bottom1">
+      <div class=" policy">
+        <a class="policy-content" href="HSE-QUALITY.HTML">HSE QUALITY</a>
+        <a class="policy-content" href="Quality-policy.html">QUALITY POLICY</a>
+        <a class="policy-content" href="about-us.html">ABOUT US</a>
+      </div>
+      <div class="icon-div">
+        <div>
+
+          <img class="social-icon" src="icons/Facebook_Logo_(2019).png">
+
+        </div>
+        <div>
+
+          <img class="social-icon" src="icons/linkedin.png">
+
+        </div>
+         <div>
+          <img class="social-icon" src="icons/Instagram_logo_2016.svg">
+
+        </div>
+        <div>
+          <img class="social-icon" src="icons/Youtube_logo.png">
+
+        </div>
+      </div>
+    </div>
+    <div class="bottom2">
+      <div class="image-div">
+        <img class="rotating-image" src="poldot-pictures/poldot-just-logo.png">
+
+      </div>
+
+      <div class="details">
+        <div class="phone">PHONE NUMBER:+234 9123805674</div>
+        <div>Email: poldotoilandgas@gmail.com</div>
+        
+        <div> Asa-Afariogun EState Lagos NG, Ajao</div>
+        <div>© 2025 POLDOT Oil & Gas. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+ <script>
+         const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide) => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Initial call
+        showSlide(currentSlide);
+
+        // Auto slide change every 3 seconds (3000 milliseconds)
+        setInterval(() => {
+            changeSlide(1); // Auto advance to the next slide
+        }, 5000);
+
+          const changeColorButton = document.getElementById('changeColorButton');
+        const body = document.body;
+
+        function changeBackgroundColor() {
+            // Array of colors to choose from
+            const colors = ['#ffffff','#dcdcdc', '#F8F8ff', '#FFf8f0', '#dcdcdc', '#F8F8ff', '#FFf8f0'];
+            // Pick a random color from the array
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            // Change the background color of the body
+            body.style.backgroundColor = randomColor;
+        }
+
+        // Add a click event listener to the button
+        changeColorButton.addEventListener('click', changeBackgroundColor);
+
+        // Change color every 2 seconds
+        setInterval(changeBackgroundColor, 5000);
+      </script>
+</body>
+</html>

@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poldot</title>
     <link rel="icon" href="poldot-pictures/poldot-just-logo.png" type="image/png">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/center.css">
-    <link rel="stylesheet" href="css/bottom.css">
+    <link rel="stylesheet" href="css/text.css">
     <style>
+        /*
+         * It's generally best practice to keep all styles,
+         * including those for the slider, in external CSS files.
+         * For this example, I'm keeping your inline styles here
+         * but adding responsive adjustments within media queries.
+         */
+
         .slider-container {
-            width: 100%; /* Adjust as needed */
-            height: 450px; /* Adjust as needed */
+            width: 100%;
+            /* Removed fixed height here, will manage with aspect-ratio and max-height */
             position: relative;
             overflow: hidden;
-            margin:0;
-            
+            margin: 0;
+            /* Added for better aspect ratio control */
+            aspect-ratio: 16 / 9; /* Common video aspect ratio, adjust as needed */
+            max-height: 450px; /* Still cap height for larger screens */
         }
 
         .slide {
@@ -26,358 +33,408 @@
             height: 100%;
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            display: flex; /* For centering the image */
-            justify-content:unset;
+            display: flex;
+            justify-content: flex-start; /* Aligns content to the start (left) */
             align-items: center;
         }
 
         .slide img {
-            padding-top:1px;
             width: 100%;
-            height:auto;
-              /* Ensure image doesn't exceed container */
-            /*max-height: 100%; /* Ensure image doesn't exceed container */
-            object-fit: contain; /* Maintain image aspect ratio */
-            
+            height: 100%;
+            object-fit: cover; /* Changed to cover to ensure image fills the space */
+            object-position: center; /* Center the image within its container */
         }
 
         .slide.active {
             opacity: 1;
             z-index: 1;
         }
-        .text-overlay{
-          position: absolute;
+
+        /* --- Text Overlay on Slides --- */
+        .slide-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align text to the left */
+            color: white;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0)); /* Darker gradient for text readability */
+            padding-left: 5%;
+            box-sizing: border-box;
+            text-align: left; /* Ensure text aligns left within the overlay */
+        }
+        .slide-text-div {
+            max-width: 50%; /* Control width of text block on larger screens */
+            padding: 20px; /* Add some padding around the text */
+            box-sizing: border-box;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Stronger shadow for readability */
+        }
+        .slide-headear {
+            font-size: 2.8rem; /* Adjusted for better visual impact */
+            margin-bottom: 1rem;
+        }
+        .slide-body {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .slide-button {
+            background-color: #F7941D; /* Used your existing brand color */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none; /* In case it's an anchor acting as a button */
+            display: inline-block; /* Allows padding and margin */
+        }
+        .slide-button:hover {
+            background-color: #1c26db; /* Used your existing brand color */
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            user-select: none;
+        }
+        .nav-arrow.left {
+            left: 10px;
+        }
+        .nav-arrow.right {
+            right: 10px;
+        }
+
+        /* --- Mobile Responsiveness for Slider (Inline styles, ideally in header.css or a global responsive.css) --- */
+        @media (max-width: 768px) {
+            .slider-container {
+                max-height: 350px; /* Adjust height for smaller screens */
+                aspect-ratio: 4 / 3; /* More squarish for mobile */
+            }
+            .slide-text-div {
+                max-width: 90%; /* Allow text to take more width on small screens */
+                padding: 15px;
+            }
+            .slide-headear {
+                font-size: 2rem; /* Smaller font for mobile headings */
+            }
+            .slide-body {
+                font-size: 1rem; /* Smaller font for mobile body text */
+            }
+            .slide-button {
+                padding: 10px 20px; /* Smaller button on mobile */
+                font-size: 0.9rem;
+            }
+            .nav-arrow {
+                font-size: 1.2rem;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container {
+                max-height: 280px; /* Even smaller height for very small screens */
+                aspect-ratio: 3 / 2;
+            }
+            .slide-headear {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .slide-body {
+                font-size: 0.8rem;
+                display: block; /* Keep text visible, but small */
+                margin-bottom: 1rem;
+            }
+            .slide-button {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            .slide-text {
+                background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)); /* Slightly darker overlay */
+            }
+            .slide-text-div {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
-  <div>
-    <div class="header-div">
-      <div class="header">
-        <div class="header-image-div">
-          <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png">
-        </div>
-        <div class="header-left-section">
-          <a href="home.html" class="head-ops">HOME
-          </a>
-          <a href="about-us.html" class="head-ops">ABOUT</a>
-         <a class="head-ops" href="#changeColorButton">
-         SERVICE
-         </a>
-          <a href="#details" class="head-ops">CONTACT</a>
-        </div>
-      </div>
-     
-      <div class="slider-container">
-        <div class="slide active">
-            <img src="poldot-pictures/ebuka-with-background.png" alt="Image 1">
-            <div class="slide-text">
-              <div class="slide-text-div">
-                <h1  class=" slide-headear">
-                  Safety at Poldot Oil and Gas
-                </h1>
-                <P class="slide-body" >
-                  At Poldot Oil and Gas, safety is not just a policy; it's a core value ingrained in every aspect of our operations. We are committed to ensuring the well-being of our employees, contractors, and the 
-                </P>
-                <button class="slide-button">
-                  Read more &#8594;
+    <div>
+        <div class="header-div">
+            <div class="header">
+                <div class="header-image-div">
+                    <img class="poldot-logo" src="poldot-pictures/poldot-logo-without-gas.png" alt="Poldot Oil & Gas Logo">
+                </div>
+                <div class="header-left-section">
+                    <a href="index.html" class="head-ops">HOME</a>
+                    <a href="about-us.html" class="head-ops">ABOUT</a>
+                    <a class="head-ops" href="#our-services-section">SERVICE</a>
+                    <a href="#details" class="head-ops">CONTACT</a>
+                </div>
+                <button class="mobile-menu-button" aria-label="Toggle navigation menu">
+                    ☰
                 </button>
-              </div>
-              
             </div>
-        </div>
-        <div class="slide">
-            <img src="poldot-pictures/fire-hidrate.png" alt="Image 2">
-            <div class="slide-text">
-              <div class="slide-text-div">
-                <h1  class=" slide-headear">
-                  Safety at Poldot Oil and Gas
-                </h1>
-                <P class="slide-body" >
-                  At Poldot Oil and Gas, safety is not just a policy; it's a core value ingrained in every aspect of our operations. We are committed to ensuring the well-being of our employees, contractors, and the 
-                </P>
-                <button class="slide-button">
-                  Read more &#8594;
-                </button>
-              </div>
+
+            <div class="slider-container">
+                <div class="slide active">
+                    <img src="poldot-pictures/ebuka-with-background.png" alt="Safety at Poldot Oil and Gas Operations">
+                    <div class="slide-text">
+                        <div class="slide-text-div">
+                            <h1 class="slide-headear">Safety at Poldot Oil and Gas</h1>
+                            <p class="slide-body">At Poldot Oil and Gas, safety is not just a policy; it's a core value ingrained in every aspect of our operations. We are committed to ensuring the well-being of our employees, contractors, and the communities we serve.</p>
+                            <button class="slide-button">Read more &#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="poldot-pictures/fire-hidrate.png" alt="Fire Hydrant for Safety">
+                    <div class="slide-text">
+                        <div class="slide-text-div">
+                            <h1 class="slide-headear">Emergency Preparedness</h1>
+                            <p class="slide-body">Our robust emergency response plans and regular drills ensure we are always prepared to handle any situation, prioritizing the safety of all personnel and assets.</p>
+                            <button class="slide-button">Read more &#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="poldot-pictures/truck-picture.png" alt="Oil and Gas Delivery Truck">
+                    <div class="slide-text">
+                        <div class="slide-text-div">
+                            <h1 class="slide-headear">Efficient Logistics & Delivery</h1>
+                            <p class="slide-body">We ensure timely and secure delivery of oil and gas products with our advanced logistics and well-maintained fleet, adhering to the highest industry standards.</p>
+                            <button class="slide-button">Read more &#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="poldot-pictures/night-at-the-rig.png" alt="Oil Rig at Night">
+                    <div class="slide-text">
+                        <div class="slide-text-div">
+                            <h1 class="slide-headear">24/7 Operations Excellence</h1>
+                            <p class="slide-body">Our dedicated teams work around the clock, utilizing cutting-edge technology to ensure uninterrupted and efficient operations, even in challenging environments.</p>
+                            <button class="slide-button">Read more &#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="poldot-pictures/wedding-iron.png" alt="Industrial Welding Work">
+                    <div class="slide-text">
+                        <div class="slide-text-div">
+                            <h1 class="slide-headear">Precision Engineering & Construction</h1>
+                            <p class="slide-body">With state-of-the-art equipment and skilled engineers, we deliver high-quality construction and fabrication solutions for complex oil and gas projects.</p>
+                            <button class="slide-button">Read more &#8594;</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-arrow left" onclick="changeSlide(-1)">❮</div>
+                <div class="nav-arrow right" onclick="changeSlide(1)">❯</div>
             </div>
-        </div>
-        <div class="slide">
-            <img src="poldot-pictures/truck-picture.png" alt="Image 3">
-            <div class="slide-text">
-              <div class="slide-text-div">
-                <h1  class=" slide-headear">
-                  Safety at Poldot Oil and Gas
-                </h1>
-                <P class="slide-body" >
-                  At Poldot Oil and Gas, safety is not just a policy; it's a core value ingrained in every aspect of our operations. We are committed to ensuring the well-being of our employees, contractors, and the 
-                </P>
-                <button class="slide-button">
-                  Read more &#8594;
-                </button>
-              </div>
-              
-            </div>
-            
-        </div>
-        <div class="slide">
-          <img src="poldot-pictures/night-at-the-rig.png" alt="Image 6">
-          <div class="slide-text">
-              <div class="slide-text-div">
-                <h1  class=" slide-headear">
-                  Safety at Poldot Oil and Gas
-                </h1>
-                <P class="slide-body" >
-                  At Poldot Oil and Gas, safety is not just a policy; it's a core value ingrained in every aspect of our operations. We are committed to ensuring the well-being of our employees, contractors, and the 
-                </P>
-                <button class="slide-button">
-                  Read more &#8594;
-                </button>
-              </div>
-              
-           </div>
-        </div>
-        <div class="slide">
-         <img src="poldot-pictures/wedding-iron.png" alt="Image 5">
-         <div class="slide-text">
-              <div class="slide-text-div">
-                <h1  class=" slide-headear">
-                  Safety at Poldot Oil and Gas
-                </h1>
-                <P class="slide-body" >
-                  At Poldot Oil and Gas, safety is not just a policy; it's a core value ingrained in every aspect of our operations. We are committed to ensuring the well-being of our employees, contractors, and the 
-                </P>
-                <button class="slide-button">
-                  Read more &#8594;
-                </button>
-              </div>
-        
-            </div>
-        </div>
-        <div class="nav-arrow left" onclick="changeSlide(-1)">❮</div>
-        <div class="nav-arrow right" onclick="changeSlide(1)">❯</div>
-     </div>
-    </div>
-    <div class="center-content-div">
-      <div class="center-content-div2">
-        <h1>WE ARE POLDOT</h1>
-        <p class="p2"> Poldot Oil and Gas is a wholly Nigerian company, fully compliant with Nigerian laws, and dedicated to fostering local content development and fulfilling our corporate social responsibilities.</p>
-        <p class="p2">
-          We offer a comprehensive suite of EPCIC services, encompassing engineering design, concept development, procurement, EPC/turnkey solutions, construction, consulting, commissioning, operations, and maintenance. 
-        </p>
-        <p class="p2">
-          Our team of highly skilled and agile professional engineers, consultants, and project managers is poised to provide exceptional service for your oil and gas EPCIC needs.
-        </p>
-      </div>
-      <div class="center-picture-div">
-        <img src="poldot-pictures/IMG_9909.PNG" class="poldot-image1">
-      </div>
-    </div>
-    <div id="changeColorButton">
-      
-      <div class="our-service">
-        Our Services
-      </div>
-      <div>
-        <div class="our-service-content-div">
-          <img class="content-picture" src="pictures/man-power.jpg.png">
-          <p class="topic-class">MANPOWER PROVISION</p>
-          <div class="our-service-content">
-            <p class="p-3">
-            We leverage our extensive experience in the industry, along with a wide range of successfully completed projects, to maintain a broad network of skilled personnel. This allows us to quickly form teams capable of executing any project.
-            </p>
-            <a class="read-button" href="Man-power.html">
-              READ MORE
-            </a>
-          </div>
         </div>
 
-        <div class="our-service-content-div">
-          <img class="content-picture" src="pictures/precurement.png">
-
-          <p class="topic-class">PROCUREMENT</p>
-
-          <div class="our-service-content">
-            <p class="p-3">
-          Procurement is a vital element of successful EPCIC (Engineering, Procurement, Construction, Installation, and Commissioning) projects within the oil and gas industry. Our dedicated procurement team offers comprehensive supply chain management services
-            </p>
-            <a class="read-button" href="Procurement.html">
-              READ MORE
-            </a>
-          </div>
+        <div class="center-content-div">
+            <div class="center-content-div2">
+                <h1>WE ARE POLDOT</h1>
+                <p class="p2"> Poldot Oil and Gas is a wholly Nigerian company, fully compliant with Nigerian laws, and dedicated to fostering local content development and fulfilling our corporate social responsibilities.</p>
+                <p class="p2">
+                    We offer a comprehensive suite of EPCIC services, encompassing engineering design, concept development, procurement, EPC/turnkey solutions, construction, consulting, commissioning, operations, and maintenance.
+                </p>
+                <p class="p2">
+                    Our team of highly skilled and agile professional engineers, consultants, and project managers is poised to provide exceptional service for your oil and gas EPCIC needs.
+                </p>
+            </div>
+            <div class="center-picture-div">
+                <img src="poldot-pictures/IMG_9909.PNG" class="poldot-image1" alt="Poldot Oil & Gas Facility">
+            </div>
         </div>
+
+        <div id="our-services-section">
+            <div class="our-service">Our Services</div>
+            <div class="our-service-grid-container"> <div class="our-service-content-div">
+                    <img class="content-picture" src="pictures/man-power.jpg.png" alt="Manpower Provision">
+                    <p class="topic-class">MANPOWER PROVISION</p>
+                    <div class="our-service-content">
+                        <p class="p-3">
+                            We leverage our extensive experience in the industry, along with a wide range of successfully completed projects, to maintain a broad network of skilled personnel. This allows us to quickly form teams capable of executing any project.
+                        </p>
+                        <a class="read-button" href="Man-power.html">READ MORE</a>
+                    </div>
+                </div>
 
                 <div class="our-service-content-div">
-          <img class="content-picture" src="pictures/install.png">
-
-          <p class="topic-class">INSTALLATION</p>
-          <div class="our-service-content">
-            <p class="p-3">
-            Installation is a pivotal phase within EPCIC (Engineering, Procurement, Construction, Installation, and Commissioning) projects in the oil and gas industry, encompassing the physical deployment and commissioning of all project components.
-            </p>
-            <a class="read-button" href="installation.html">
-              READ MORE
-            </a>
-          </div>
-        </div>
-
-         <div class="our-service-content-div">
-          <img class="content-picture" src="pictures/Challenges-faced-by-Oil-Gas-Industries-.png">
-          <p class="topic-class">ENGINEERING</p>
-          <div class="our-service-content">
-            <p class="p-3">
-            Our installation services span the entire process, from meticulous initial planning and preparation through to final commissioning and ongoing maintenance. Our team comprises highly skilled and experienced professionals, certified in the latest installation techniques and technologies, ensuring safe and efficient project execution.
-            </p>
-            <a class="read-button" href="engineering.html">
-              READ MORE
-            </a>
-          </div>
-        </div>
+                    <img class="content-picture" src="pictures/precurement.png" alt="Procurement Services">
+                    <p class="topic-class">PROCUREMENT</p>
+                    <div class="our-service-content">
+                        <p class="p-3">
+                            Procurement is a vital element of successful EPCIC (Engineering, Procurement, Construction, Installation, and Commissioning) projects within the oil and gas industry. Our dedicated procurement team offers comprehensive supply chain management services.
+                        </p>
+                        <a class="read-button" href="Procurement.html">READ MORE</a>
+                    </div>
+                </div>
 
                 <div class="our-service-content-div">
-          <img class="content-picture" src="pictures/pexels-davidmcbee-392031.jpg">
-          <p class="topic-class">CONSTRUCTION</p>
-          <div class="our-service-content">
-            <p class="p-3">
-            We leverage our extensive experience in the industry, along with a wide range of successfully completed projects, to maintain a broad network of skilled personnel. This allows us to quickly form teams capable of executing any project.
-            Our core team comprises highly skilled and experienced engineers
-            </p>
-            <a class="read-button" href="construction.html">
-              READ MORE
-            </a>
-          </div>
-        </div>
+                    <img class="content-picture" src="pictures/install.png" alt="Installation Services">
+                    <p class="topic-class">INSTALLATION</p>
+                    <div class="our-service-content">
+                        <p class="p-3">
+                            Installation is a pivotal phase within EPCIC (Engineering, Procurement, Construction, Installation, and Commissioning) projects in the oil and gas industry, encompassing the physical deployment and commissioning of all project components.
+                        </p>
+                        <a class="read-button" href="installation.html">READ MORE</a>
+                    </div>
+                </div>
 
                 <div class="our-service-content-div">
-          <img class="content-picture" src="pictures/commission.png">
-          <p class="topic-class">COMMISSIONING</p>
-          <div class="our-service-content">
-            <p class="p-3">
-              Our installation experience includes topside structures, jackets, metallic caissons, bridges, decks, helidecks, suction & driven piles, boat bumpers, protectors, riser guards, pipe spooling, flare/vent booms, equipment modules, skids, subsea manifold, PLEMS, FLEM etc.
-            </p>
-            <a class="read-button" href="Commissioning.html">
-              READ MORE
-            </a>
-          </div>
+                    <img class="content-picture" src="pictures/Challenges-faced-by-Oil-Gas-Industries-.png" alt="Engineering Solutions">
+                    <p class="topic-class">ENGINEERING</p>
+                    <div class="our-service-content">
+                        <p class="p-3">
+                            Our installation services span the entire process, from meticulous initial planning and preparation through to final commissioning and ongoing maintenance. Our team comprises highly skilled and experienced professionals, certified in the latest installation techniques and technologies, ensuring safe and efficient project execution.
+                        </p>
+                        <a class="read-button" href="engineering.html">READ MORE</a>
+                    </div>
+                </div>
+
+                <div class="our-service-content-div">
+                    <img class="content-picture" src="pictures/pexels-davidmcbee-392031.jpg" alt="Construction Projects">
+                    <p class="topic-class">CONSTRUCTION</p>
+                    <div class="our-service-content">
+                        <p class="p-3">
+                            When it comes to the "C" in EPCIC (Engineering, Procurement, Construction, Installation, and Commissioning) projects within the oil and gas sector, Poldot Oil and Gas stands as a leader. Our expertise spans the entire project lifecycle, from initial concept to the operational phase. 
+                        </p>
+                        <a class="read-button" href="construction.html">READ MORE</a>
+                    </div>
+                </div>
+
+                <div class="our-service-content-div">
+                    <img class="content-picture" src="pictures/commission.png" alt="Commissioning Process">
+                    <p class="topic-class">COMMISSIONING</p>
+                    <div class="our-service-content">
+                        <p class="p-3">
+                            Our commissioning team is comprised of highly skilled and experienced professionals. They possess the deep expertise required to manage every aspect of the commissioning process. Each team member is trained and certified in the latest commissioning techniques and technologies, guaranteeing that every commissioning project is executed safely and efficiently.
+                        </p>
+                        <a class="read-button" href="Commissioning.html">READ MORE</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-      </div>
-    </div>
-
-    <div class="why-poldot"> WHY CHOOSE POLDOT</div>
-    <div class="points">
-      <div class="title-div1">
-       <div class="title">
-        50+ years of combined experience
-       </div>
-       <div class="title-body">
-        Our executive management has over 50 years of combined experience in the oil and gas industry, meaning we have a wealth of knowledge and expertise in the field. This experience allows us to provide our clients with the highest level of service and the best possible solutions to their needs. 
-       </div>
-      </div>
+        <div class="why-poldot">WHY CHOOSE POLDOT</div>
+        <div class="points">
+            <div class="title-div1">
+                <div class="title">50+ years of combined experience</div>
+                <div class="title-body">
+                    Our executive management has over 50 years of combined experience in the oil and gas industry, meaning we have a wealth of knowledge and expertise in the field. This experience allows us to provide our clients with the highest level of service and the best possible solutions to their needs.
+                </div>
+            </div>
 
             <div class="title-div">
-       <div class="title">
-        Delivering cost-effective and technically advanced solutions
-       </div>
-       <div class="title-body">
-        We provide technically viable services at competitive prices. By staying current with the latest technological and industry developments, we enhance our operational efficiency, reduce costs, and deliver maximum value to our clients. 
-       </div>
-      </div>
+                <div class="title">Delivering cost-effective and technically advanced solutions</div>
+                <div class="title-body">
+                    We provide technically viable services at competitive prices. By staying current with the latest technological and industry developments, we enhance our operational efficiency, reduce costs, and deliver maximum value to our clients.
+                </div>
+            </div>
 
             <div class="title-div">
-       <div class="title">
-        Wide-ranging connections with dependable and proven sub-contractors
-       </div>
-       <div class="title-body">
-        We ensure on-time and on-budget project completion by utilizing a large network of trusted subcontractors, all of whom are vetted, qualified, and dedicated to upholding the highest standards. 
-       </div>
-      </div>
+                <div class="title">Wide-ranging connections with dependable and proven sub-contractors</div>
+                <div class="title-body">
+                    We ensure on-time and on-budget project completion by utilizing a large network of trusted subcontractors, all of whom are vetted, qualified, and dedicated to upholding the highest standards.
+                </div>
+            </div>
+        </div>
 
 
+        <div class="bottom1">
+            <div class="policy">
+                <a class="policy-content" href="HSE-QUALITY.HTML">HSE QUALITY</a>
+                <a class="policy-content" href="Quality-policy.html">QUALITY POLICY</a>
+                <a class="policy-content" href="about-us.html">ABOUT US</a>
+            </div>
+            <div class="icon-div">
+                <div><img class="social-icon" src="icons/Facebook_Logo_(2019).png" alt="Facebook Icon"></div>
+                <div><img class="social-icon" src="icons/linkedin.png" alt="LinkedIn Icon"></div>
+                <div><img class="social-icon" src="icons/Instagram_logo_2016.svg" alt="Instagram Icon"></div>
+                <div><img class="social-icon" src="icons/Youtube_logo.png" alt="YouTube Icon"></div>
+            </div>
+        </div>
+        <div class="bottom2">
+            <div class="image-div">
+                <img class="rotating-image" src="poldot-pictures/poldot-just-logo.png" alt="Poldot Spinning Logo">
+            </div>
+            <div id="details">
+                <div class="phone">PHONE NUMBER:+234 9123805674</div>
+                <div>Email: poldotoilandgas@gmail.com</div>
+                <div>Asa-Afariogun Estate Lagos NG, Ajao</div>
+                <div>© 2025 POLDOT Oil & Gas. All rights reserved.</div>
+            </div>
+        </div>
     </div>
-    <img class="test-design" sc="worely-image-1.png">
+    <script>
+    // Existing slider script
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
 
-    <div class="bottom1">
-      <div class=" policy">
-        <a class="policy-content" href="HSE-QUALITY.HTML">HSE QUALITY</a>
-        <a class="policy-content" href="Quality-policy.html">QUALITY POLICY</a>
-        <a class="policy-content" href="about-us.html">ABOUT US</a>
-        
-      </div>
-      <div class="icon-div">
-        <div>
+    function showSlide(index) {
+        slides.forEach((slide) => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
 
-          <img class="social-icon" src="icons/Facebook_Logo_(2019).png">
-
-        </div>
-        <div>
-
-          <img class="social-icon" src="icons/linkedin.png">
-
-        </div>
-         <div>
-          <img class="social-icon" src="icons/Instagram_logo_2016.svg">
-
-        </div>
-        <div>
-          <img class="social-icon" src="icons/Youtube_logo.png">
-
-        </div>
-      </div>
-    </div>
-    <div class="bottom2">
-      <div class="image-div">
-        <img class="rotating-image" src="poldot-pictures/poldot-just-logo.png">
-
-      </div>
-
-      <div id="details">
-        <div class="phone">PHONE NUMBER:+234 9123805674</div>
-        <div>Email: poldotoilandgas@gmail.com</div>
-        <div> Asa-Afariogun EState Lagos NG, Ajao</div>
-        <div>© 2025 POLDOT Oil & Gas. All rights reserved.</div>
-      </div>
-    </div>
-  </div>
- <script>
-         const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            slides.forEach((slide) => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-        }
-
-        function changeSlide(direction) {
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        // Initial call
+    function changeSlide(direction) {
+        currentSlide = (currentSlide + direction + slides.length) % slides.length;
         showSlide(currentSlide);
+    }
 
-        // Auto slide change every 3 seconds (3000 milliseconds)
-        setInterval(() => {
-            changeSlide(1); // Auto advance to the next slide
-        }, 5000);
+    showSlide(currentSlide);
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
 
-          const changeColorButton = document.getElementById('changeColorButton');
-        const body = document.body;
+    // --- New Mobile Menu Script ---
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const headerLeftSection = document.querySelector('.header-left-section');
 
-        function changeBackgroundColor() {
-            // Array of colors to choose from
-            const colors = ['#ffffff','#dcdcdc', '#F8F8ff', '#FFf8f0', '#dcdcdc', '#F8F8ff', '#FFf8f0'];
-            // Pick a random color from the array
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            // Change the background color of the body
-            body.style.backgroundColor = randomColor;
-        }
+    if (mobileMenuButton && headerLeftSection) {
+        mobileMenuButton.addEventListener('click', () => {
+            headerLeftSection.classList.toggle('mobile-menu-open');
+        });
 
-        // Add a click event listener to the button
+        // Optional: Close menu when a link is clicked
+        headerLeftSection.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                headerLeftSection.classList.remove('mobile-menu-open');
+            });
+        });
+    }
+
+     //Original background color change script (commented out as discussed)
+    
+    const changeColorButton = document.getElementById('our-services-section');
+    const body = document.body;
+
+    function changeBackgroundColor() {
+        const colors = ['#ffffff','#dcdcdc', '#F8F8ff', '#FFf8f0', '#dcdcdc', '#F8F8ff', '#FFf8f0'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        body.style.backgroundColor = randomColor;
+    }
+
+    if (changeColorButton) { // Check if the element exists
         changeColorButton.addEventListener('click', changeBackgroundColor);
-
-        // Change color every 2 seconds
-        setInterval(changeBackgroundColor, 5000);
-      </script>
+    }
+    // Only run this if you want it to change automatically, not on click
+     setInterval(changeBackgroundColor, 5000);
+    
+</script>
 </body>
 </html>
